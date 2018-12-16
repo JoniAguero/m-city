@@ -14,6 +14,9 @@ const config = {
 firebase.initializeApp(config);
 
 const firebaseDB = firebase.database()
-firebaseDB.ref('matches').once('value').then((snapshopt) => {
-    console.log(snapshopt.val()) // val() trae los valores
-})
+const firebaseMatches  = firebaseDB.ref('matches')
+
+export {
+    firebase,
+    firebaseMatches
+}
