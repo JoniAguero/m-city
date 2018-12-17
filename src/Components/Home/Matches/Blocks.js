@@ -24,8 +24,8 @@ export class Blocks extends Component {
     showMatches = (matches) => (
         matches ?
             matches.map((match) => (
-                <Slide bottom>
-                    <div className="item" key={match.id}>
+                <Slide bottom key={match.id}>
+                    <div className="item">
                         <div className="wrapper">
                             <MatchesBlock match={match}/>
                         </div>

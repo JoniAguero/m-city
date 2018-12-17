@@ -30,7 +30,7 @@ export class HomeCardsPlayers extends Component {
     showAnimateCards = () => (
         this.state.cards.map((card, i) => (
             <Animate
-                kei={i}
+                key={i}
                 show={this.props.show}
                 start={{
                     left:0,
