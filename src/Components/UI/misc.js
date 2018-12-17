@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const Tag = (props) => {
@@ -38,4 +38,14 @@ export const firebaseLooper = (snapshot) => {
         })
     });
     return data;
+}
+
+export const validate = (element) => {
+    let error = [true, ''];
+    if(element.validation.required) {
+        const valid = element.value.trim() !== '';
+        const message = `${!valid ? 'This field is required' : ''}`;
+        error = !valid ? [false, message] : error;
+    }
+    return error;
 }
