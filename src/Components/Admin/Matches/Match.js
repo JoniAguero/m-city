@@ -211,7 +211,7 @@ export default class Match extends Component {
         }
 
         if(!matchId){
-
+            getTeams(null, 'Add Match');
         } else {
             firebaseDB.ref(`matches/${matchId}`).once('value').then((snapshot) => {
                 const match = snapshot.val();
@@ -271,8 +271,16 @@ export default class Match extends Component {
                         }, 2000)
                     )
                     .catch(this.setState({formError: true}))
-            } else {
-
+            } else if(this.state.formType === 'Add Match') {
+                firebaseMatches.push(dataToSubmit)
+                    .then(
+                        this.props.history.push('/admin_matches')
+                    )
+                    .catch(
+                        this.setState({
+                            formError: true
+                        })
+                    )
             }
         } else {
             this.setState({
