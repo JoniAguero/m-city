@@ -10,10 +10,9 @@ import Dashboard from './Components/Admin/Dashboard';
 import PrivateRoute from './Components/AuthRoutes/PrivateRoute';
 import PublicRoute from './Components/AuthRoutes/PublicRoute';
 import AdminMatches from './Components/Admin/Matches';
-import EditMatch from './Components/Admin/Matches/EditMatch';
+import Match from './Components/Admin/Matches/Match';
 
 const Routes = (props) => {
-  console.log(props);
   return(
     <div>
       <Header/>
@@ -21,7 +20,8 @@ const Routes = (props) => {
         <Switch>
           <PrivateRoute {...props} exact component={Dashboard} path="/dashboard"/>
           <PrivateRoute {...props} exact component={AdminMatches} path="/admin_matches"/>
-          <PrivateRoute {...props} exact component={EditMatch} path="/admin_matches/edit_match/:id"/>
+          <PrivateRoute {...props} exact component={Match} path="/admin_matches/match"/>
+          <PrivateRoute {...props} exact component={Match} path="/admin_matches/match/:id"/>
           <PublicRoute {...props} restricted={false} exact component={Home} path="/" />
           <PublicRoute {...props} restricted={true} exact component={SignIn} path="/sign_in" />
         </Switch>
