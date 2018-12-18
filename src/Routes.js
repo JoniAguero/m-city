@@ -13,6 +13,7 @@ import AdminMatches from './Components/Admin/Matches';
 import Match from './Components/Admin/Matches/Match';
 import TheTeam from './Components/TheTeam';
 import AdminPlayers from './Components/Admin/Players';
+import Player from './Components/Admin/Players/Player';
 
 const Routes = (props) => {
   return(
@@ -23,6 +24,8 @@ const Routes = (props) => {
           <PrivateRoute {...props} exact component={Dashboard} path="/dashboard"/>
           <PrivateRoute {...props} exact component={Match} path="/admin_matches/match"/>
           <PrivateRoute {...props} exact component={Match} path="/admin_matches/match/:id"/>
+          <PrivateRoute {...props} exact component={Player} path="/admin_players/player"/>
+          <PrivateRoute {...props} exact component={Player} path="/admin_players/player/:id"/>
           <PrivateRoute {...props} exact component={AdminMatches} path="/admin_matches"/>
           <PrivateRoute {...props} exact component={AdminPlayers} path="/admin_players"/>
           <PublicRoute {...props} restricted={true} exact component={SignIn} path="/sign_in" />
