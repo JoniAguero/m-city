@@ -9,6 +9,7 @@ import {SignIn} from './Components/Signin';
 import Dashboard from './Components/Admin/Dashboard';
 import PrivateRoute from './Components/AuthRoutes/PrivateRoute';
 import PublicRoute from './Components/AuthRoutes/PublicRoute';
+import AdminMatches from './Components/Admin/Matches';
 
 const Routes = (props) => {
   console.log(props);
@@ -18,6 +19,7 @@ const Routes = (props) => {
       <Layout>
         <Switch>
           <PrivateRoute {...props} exact component={Dashboard} path="/dashboard"/>
+          <PrivateRoute {...props} exact component={AdminMatches} path="/admin_matches"/>
           <PublicRoute {...props} restricted={false} exact component={Home} path="/" />
           <PublicRoute {...props} restricted={true} exact component={SignIn} path="/sign_in" />
         </Switch>
