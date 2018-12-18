@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Fade from 'react-reveal/Fade'
 import FormField from '../../UI/FormField';
 import { validate } from '../../UI/misc';
+import { firebasePromotions } from '../../../firebase';
 
 export class Enroll extends Component {
 
@@ -27,7 +28,7 @@ export class Enroll extends Component {
     }
   }
 
-  resetFormSuccess() {
+  resetFormSuccess(type) {
     const newFormdata = {...this.state.formdata}
     for (const key in newFormdata) {
       newFormdata[key].value = '';
@@ -37,7 +38,7 @@ export class Enroll extends Component {
     this.setState({
       formError: false,
       formdata: newFormdata,
-      formSuccess: 'Congratulations'
+      formSuccess: type ? 'Congratulations' : 'Already registred'
     })
 
     setTimeout(() => {
@@ -57,8 +58,16 @@ export class Enroll extends Component {
     }
 
     if(formIsValid) {
-      console.log(formIsValid);
-      this.resetFormSuccess();
+
+      firebasePromotions.orderByChild('email').equalTo(dataToSubmit.email).once('value')
+        .then((snapshot)=>{
+          if(snapshot.val() === null) {
+            firebasePromotions.push(dataToSubmit);
+            this.resetFormSuccess(true);
+          } else {
+            this.resetFormSuccess(false);
+          }
+        })
     } else {
       this.setState({
         formError: true
@@ -102,6 +111,9 @@ export class Enroll extends Component {
               </div> : null}
               <div className="success_label">{this.state.formSuccess}</div>
               <button onClick={(event)=>this.submitForm(event)}>Enroll</button>
+              <div className="enroll_discl">
+                In varius viverra ipsum porta elementum.Vestibulum fermentum nisi augue, sed maximus risus tincidunt a.
+              </div>
             </div>
           </form>
         </div>
