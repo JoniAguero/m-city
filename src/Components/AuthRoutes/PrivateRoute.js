@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-const AuthRoutes = ({
+const PrivateRoute = ({
     user,
     component: Comp,
     ...rest
@@ -11,4 +11,4 @@ const AuthRoutes = ({
   )}/>
 }
 
-export default AuthRoutes
+export default PrivateRoute
