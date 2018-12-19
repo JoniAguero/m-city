@@ -42,13 +42,65 @@ export class TheTeam extends Component {
         })
     }
 
+    showPlayerByCategory = (category) => (
+        this.state.players ?
+            this.state.players.map((player, i) => {
+                return player.position === category ?
+                    <Fade delay={i*20} left key={i}>
+                        <div className="item">
+                            <PlayerCard 
+                                number={player.number}
+                                name={player.name}
+                                lastname={player.lastname}
+                                bck={player.url}
+                            />
+                        </div>
+                    </Fade>
+                :null
+            })
+        : null
+    )
+
   render() {
-      console.log(this.state.players);
-      
     return (
-      <div>
-        
-      </div>
+        <div 
+            className="the_team_container"
+            style={{
+                background: `url(${stripes}) repeat`
+            }}
+        >
+            { !this.state.loading ?
+                <div>
+                    <div className="team_category_wrapper">
+                        <div className="title">
+                            Keepers
+                        </div>
+                        <div className="team_cards">
+                            { this.showPlayerByCategory('Keeper') }
+                        </div>
+                        <div className="title">
+                            Defences
+                        </div>
+                        <div className="team_cards">
+                            { this.showPlayerByCategory('Defence') }
+                        </div>
+                        <div className="title">
+                            Midfield
+                        </div>
+                        <div className="team_cards">
+                            { this.showPlayerByCategory('Midfield') }
+                        </div>
+                        <div className="title">
+                            Strikers
+                        </div>
+                        <div className="team_cards">
+                            { this.showPlayerByCategory('Striker') }
+                        </div>
+                    </div>
+                </div>
+                :null
+            }
+        </div>
     )
   }
 }
