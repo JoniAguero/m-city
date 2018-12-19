@@ -38,7 +38,7 @@ export default class Header extends Component {
             >The team
             </Button>
           </Link>
-          <Link to='admin_matches'>
+          <Link to='the_matches'>
             <Button
               color='inherit'
             >Matches
