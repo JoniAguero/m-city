@@ -7,7 +7,7 @@ Manchester City [Udemy Course]
 ## Information ##
 
 #### URL Deployment
-[ - ]
+[ https://m-city-ec908.firebaseapp.com/ ]
 
   - React application (version ^16.6.3)
   - Contains some sample unit tests.
